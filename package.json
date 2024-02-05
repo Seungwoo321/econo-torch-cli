@@ -1,0 +1,35 @@
+{
+    "name": "eidc",
+    "version": "1.0.0",
+    "description": "",
+    "bin": {
+        "eidc": "bin/eidc.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc --build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Seungwoo321/eidc.git"
+    },
+    "engines": {
+        "node": ">=16.14.0"
+    },
+    "keywords": [],
+    "author": "Seungwoo, Lee <seungwoo321@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Seungwoo321/eidc/issues"
+    },
+    "homepage": "https://github.com/Seungwoo321/eidc#readme",
+    "devDependencies": {
+        "@types/node": "^20.11.16",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "eidl": "^1.0.4",
+        "semver": "^7.5.4"
+    }
+}
