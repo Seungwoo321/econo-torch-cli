@@ -17,20 +17,35 @@ function checkNodeVersion(wanted, id) {
 
 checkNodeVersion(requiredVersion, 'eidc')
 
+function valildArgmuent (source) {
+    return ['kosis', 'ecos', 'oecd'].includes(source)
+}
+
 const program = require('commander')
 
 program
     .version(`eidc ${require('../package').version}`)
     .usage('<command> [options]')
 
-program
-    .command('configuration')
+program.command('configure')
+    .argument('<source>', 'kosis, ecos and oecd')
+    .option('--api-key <API Key>', 'Please enter API key')
+    .action((source, options) => {
+        if (valildArgmuent(source)) {
+            require('../commands/configure')(source, options)
+        } else {
 
-const kosisCmd = program.command('kosis')
-kosisCmd.command('configuration')
-    .option('--key <key>', 'API Key')
-    .action(options => {
-        require('../commands/kosis')(options)
+        }
+    })
+program.command('download')
+    .argument('<source>', 'kosis, ecos and oecd')
+    .option('--api-key <API Key>', 'Please enter API key')
+    .action((source, options) => {
+        if (valildArgmuent(source)) {
+            require('../commands/download')(source, options)
+        } else {
+            
+        }
     })
 
 
