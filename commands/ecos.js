@@ -1,11 +1,12 @@
 const GeneratorAPI = require('../util/GeneratorAPI')
-const { kosis } = require('eidl')
-async function download (source, options) {
+const { ecos } = require('eidl')
+async function ecosDownload(options) {
     try {
         const generator = new GeneratorAPI()
-        const apiKey = await generator.getData(source)
+        const apiKey = await generator.getData('ecos')
         console.log(`API Key is '${apiKey}'`)
-        console.log(kosis)
+        const data = await ecos.getIndicatorData(options)
+        console.log(data)
     } catch (error) {
         throw error
     }
@@ -13,7 +14,7 @@ async function download (source, options) {
 
 
 module.exports = (...args) => {
-    return download(...args).catch(error => {
+    return ecosDownload(...args).catch(error => {
         console.log(error?.response?.errors || error.message)
         if (!process.env.EIDC_CLI_TEST) {
             process.exit(1)
