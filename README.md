@@ -2,13 +2,13 @@
 
 ## Usage
 
-설치
+### Installation
 
 ```bash
 npm install eidc
 ```
 
-### 환경구성
+### Configurations
 
 - KOSIS와 ECOS는 API키를 발급받고 환경구성을 진행해주세요.
 - OECD는 API키가 필요하지 않습니다.
@@ -17,7 +17,7 @@ npm install eidc
 eidc configure [kosis|oecd]
 ```
 
-### OECD 다운로드
+### Download from OECD
 
 - OECD CLI
 
@@ -28,7 +28,7 @@ eidc oecd [options]
 eidc oecd --data-url "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/KOR.M.LI...AA...H?startPeriod=2023-11&dimensionAtObservation=AllDimensions&detail=DataOnly&format=jsondata"
 ```
 
-### KOSIS 다운로
+### Download from KOSIS
 
 KOSIS API 호출에서 파라메터 방식으로 데이터를 호출하는 `/Param/statisticsParameterData.do`을 제공합니다.
 
@@ -58,7 +58,7 @@ objL6| 없음| 아니오||
 objL7| 없음| 아니오||
 objL8| 없음| 아니오||
 
-### ECOS 다운로드
+### Download from ECOS
 
 ECOS API에서 `StatisticSearch` 서비스를 제공합니다
 
