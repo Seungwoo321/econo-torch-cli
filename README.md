@@ -233,19 +233,30 @@ eidc ecos --statCode "731Y004" --itemCode1 "0000002" --period "M" --searchStartD
 - 국제 상품 가격
   - [국제상품 코드/통화단위 목록 (국제 상품 가격)](#국제상품-코드통화단위-목록-국제-상품-가격)
 
-<!-- ---------------------
-지표명   | 지표코드 |
----------|----------|
-동행지수 순환변동치 | CCI|
-선행지수 순환변동치 | CLI|
-선행종합지수 | LCI|
-코스피 지수 | KOSPI|
-월별 소비자 물가 등락률 전년 동월비 (%) | CPI_YoY|
-코스피 시가총액 | KOSPI_MarketCap |
-경제 성장률(GDP)(실질, 계절조정, 전기비) | RGDP_QoQ_SA|
-경제 성장률(GDP)(실질, 원계열, 전년동기비) | RGDP_YoY |
-GDP 디플레이터 등락률 (원계열, 전년동기비) | GDP_D_YoY |
-국내총생산(명목,원화표시) (십억원) | NGDP_KRW | -->
+```bash
+# 원유-WTI
+eidc ecos --statCode "902Y003" --itemCode1 "010101" --period "M" --searchStartDate "202401" --searchEndDate "202401"
+
+```
+
+- 주요 국제 금리
+  - [국가코드 목록 (주요 국제 금리, 국제 주요국 주가지수)](#국가코드 목록 (주요 국제 금리, 국제 주요국 주가지수))
+
+```bash
+# 장기금리 (IRLT)
+eidc ecos --statCode "902Y023" --itemCode1 "IRLT" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "KOR"
+
+# 단기금리 (IR3TIP)
+eidc ecos --statCode "902Y023" --itemCode1 "IR3TIB" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "KOR"
+```
+
+- 국제 주요국 주가지수 (2015=100)
+  - [국가코드 목록 (주요 국제 금리, 국제 주요국 주가지수)](#국가코드 목록 (주요 국제 금리, 국제 주요국 주가지수))
+
+```bash
+# 미국
+eidc ecos --statCode "902Y002" --itemCode1 "USA" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "KOR"
+```
 
 ## Reference
 
@@ -269,3 +280,42 @@ GDP 디플레이터 등락률 (원계열, 전년동기비) | GDP_D_YoY |
     - 소맥 - 030102 달러/톤
     - 원당 - 030301 센트/파운드
     - 원면 - 020101 센트/파운드
+
+### 국가코드 목록 (주요 국제 금리, 국제 주요국 주가지수)
+
+1. 한국 - KOR
+2. 미국 - USA
+3. 중국 - CHN
+4. 일본 - JPN
+5. 독일 - DEU
+6. 인도 - IND
+7. 영국 - GBR
+8. 프랑스 - FRA
+9. 러시아 - RUS
+10. 캐나다 - CAN
+11. 이탈리아 - ITA
+12. 브라질 - BRA
+13. 오스트레일리아 - AUS
+14. 멕시코 - MEX
+15. 인도네시아 - IDN
+16. 튀르키예 - TUR
+17. 스위스 - CHE
+18. 스웨덴 - SWE
+19. 노르웨이 - NOR
+20. 남아프리카 공화국 - ZAF
+21. 덴마크 DNK
+22. 뉴질랜드 NZL
+
+<!-- ---------------------
+지표명   | 지표코드 |
+---------|----------|
+동행지수 순환변동치 | CCI|
+선행지수 순환변동치 | CLI|
+선행종합지수 | LCI|
+코스피 지수 | KOSPI|
+월별 소비자 물가 등락률 전년 동월비 (%) | CPI_YoY|
+코스피 시가총액 | KOSPI_MarketCap |
+경제 성장률(GDP)(실질, 계절조정, 전기비) | RGDP_QoQ_SA|
+경제 성장률(GDP)(실질, 원계열, 전년동기비) | RGDP_YoY |
+GDP 디플레이터 등락률 (원계열, 전년동기비) | GDP_D_YoY |
+국내총생산(명목,원화표시) (십억원) | NGDP_KRW | -->
