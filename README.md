@@ -67,7 +67,7 @@ serviceName|StatisticSearch|N|기본값|
 language|kr|N|기본값|
 startCount|1|N|기본값|
 endCount|1|N|기본값|
-stateCode|Y|||
+statCode|Y|||
 period|M|N|기본값|
 searchStartDate||Y||
 searchEndDate||Y||
@@ -79,7 +79,7 @@ itemCode4||N||
 - 시장금리 국고채 1년 일별
 
 ```bash
-eidc ecos --stateCode "817Y002" --itemCode1 "010190000" --period "D" --searchStartDate "20240101" --searchEndDate "20240201" --endCount "30"
+eidc ecos --statCode "817Y002" --itemCode1 "010190000" --period "D" --searchStartDate "20240101" --searchEndDate "20240201" --endCount "30"
 ```
 
 
