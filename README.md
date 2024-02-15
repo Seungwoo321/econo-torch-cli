@@ -21,6 +21,26 @@ npm i -g ./eidc
 eidc configure [kosis|oecd]
 ```
 
+### Base
+
+```bash
+$ eidc
+Usage: eidc <command> [options]
+
+Options:
+  -V, --version                 output the version number
+  -h, --help                    display help for command
+
+Commands:
+  configure [options] <source>
+  oecd [options]
+  ecos [options]
+  help [command]                display help for command
+
+  Run eidc <command> --help for detailed usage of given command.
+
+```
+
 ### Download from OECD
 
 ```bash
