@@ -38,7 +38,6 @@ Commands:
   help [command]                display help for command
 
   Run eidc <command> --help for detailed usage of given command.
-
 ```
 
 ### Download from OECD
@@ -83,7 +82,7 @@ objL6| 없음| 아니오||
 objL7| 없음| 아니오||
 objL8| 없음| 아니오||
 
-#### Real Case
+#### KOSIS Real Case
 
 - TODO
 
@@ -115,7 +114,9 @@ itemCode2||N||
 itemCode3||N||
 itemCode4||N||
 
-#### Real Case
+#### ECOS Real Case
+
+- 시장금리 (일별 / 월,분기,년)
 
 ```bash
 # 시장금리 국고채 (1년) 일별
@@ -140,6 +141,98 @@ eidc ecos --statCode "721Y001" --itemCode1 "5050000" --period "M" --searchStartD
 eidc ecos --statCode "721Y001" --itemCode1 "7020000" --period "M" --searchStartDate "202401" --searchEndDate "202402"
 ```
 
+- 기준금리 (한국은행 기준금리 및 여수신금리)
+
+```bash
+# 한국은행 기준금리
+## 월
+eidc ecos --statCode "722Y001" --itemCode1 "0101000" --period "M" --searchStartDate "202401" --searchEndDate "202402"
+## 일
+eidc ecos --statCode "722Y001" --itemCode1 "0101000" --period "D" --searchStartDate "20240101" --searchEndDate "20240201" --endCount "31"
+```
+
+- 경제성장률 (분기지표)
+
+```bash
+# 국내총생산(GDP)(계절조정, 명목) 
+eidc ecos --statCode "200Y003" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# 국내총생산(GDP)(계절조정, 실질) 
+eidc ecos --statCode "200Y004" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# 국내총생산(GDP)(원계열, 명목)
+eidc ecos --statCode "200Y005" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# 국내총생산(GDP)(원계열, 실질)
+eidc ecos --statCode "200Y006" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# GDP디플레이터 (2015=100)
+eidc ecos --statCode "200Y011" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# 경제성장률 (실질, 계절조정, 전기비)
+eidc ecos --statCode "200Y002" --itemCode1 "10111" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# 경제성장률 (실질, 원계열, 전년동기비)
+eidc ecos --statCode "200Y002" --itemCode1 "10211" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+
+# GDP 디플레이터 등락률 (원계열, 전년동기비)
+eidc ecos --statCode "200Y002" --itemCode1 "301" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
+```
+
+- 경제성장률 (연간지표)
+
+```bash
+# GDP디플레이터 (2015=100)
+eidc ecos --statCode "200Y011" --itemCode1 "1400" --period "A" --searchStartDate "2022" --searchEndDate "2022"
+eidc ecos --statCode "200Y001" --itemCode1 "90103" --period "A" --searchStartDate "2022" --searchEndDate "2022"
+
+# GDP디플레이터 등락률 (%)
+eidc ecos --statCode "200Y001" --itemCode1 "9010301" --period "A" --searchStartDate "2022" --searchEndDate "2022"
+    
+# 국내총생산(GDP)(명목, 원화표시)
+eidc ecos --statCode "200Y001" --itemCode1 "10101" --period "A" --searchStartDate "2022" --searchEndDate "2022"
+    
+# 국내총생산(GDP)(명목, 달러표시)
+eidc ecos --statCode "200Y001" --itemCode1 "1010101" --period "A" --searchStartDate "2022" --searchEndDate "2022"
+    
+# 국내총생산(실질성장률)
+eidc ecos --statCode "200Y001" --itemCode1 "20101" --period "A" --searchStartDate "2022" --searchEndDate "2022"
+```
+
+- 환율 > 일일환율 (대원화환율)
+
+```bash
+# 원/미국달러 (매매기준율) (일별)
+eidc ecos --statCode "731Y001" --itemCode1 "0000001" --period "D" --searchStartDate "20230101" --searchEndDate "20230131" --endCount 31
+
+# 원/위안 (매매기준율) (일별)
+eidc ecos --statCode "731Y001" --itemCode1 "0000053" --period "D" --searchStartDate "20230101" --searchEndDate "20230131" --endCount 31
+
+# 원/일본엔(100엔) (일별)
+eidc ecos --statCode "731Y001" --itemCode1 "0000002" --period "D" --searchStartDate "20230101" --searchEndDate "20230131" --endCount 31
+```
+
+- 환율 > 평균환율/기말환율 (대원화환율, 평균자료/말일자료)
+  - 기본이 평균자료로 조회되며 통계항목코드2가 0000100이고 말일자료는 통계항목코드2가 0000200로 요청한다.
+
+```bash
+
+# 원/미국달러 (매매기준율) (월별)
+eidc ecos --statCode "731Y004" --itemCode1 "0000001" --period "M" --searchStartDate "202401" --searchEndDate "202401"
+eidc ecos --statCode "731Y004" --itemCode1 "0000001" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "0000200"
+
+# 원/위안 (매매기준율) (월별)
+eidc ecos --statCode "731Y004" --itemCode1 "0000053" --period "M" --searchStartDate "202401" --searchEndDate "202401"
+eidc ecos --statCode "731Y004" --itemCode1 "0000053" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "0000200"
+
+# 원/일본엔(100엔) (월별)
+eidc ecos --statCode "731Y004" --itemCode1 "0000002" --period "M" --searchStartDate "202401" --searchEndDate "202401"
+eidc ecos --statCode "731Y004" --itemCode1 "0000002" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "0000200"
+```
+
+- 국제 상품 가격
+- [참고](#국제상품 코드/통화단위 목록 (국제 상품 가격))
+
 <!-- ---------------------
 지표명   | 지표코드 |
 ---------|----------|
@@ -153,3 +246,26 @@ eidc ecos --statCode "721Y001" --itemCode1 "7020000" --period "M" --searchStartD
 경제 성장률(GDP)(실질, 원계열, 전년동기비) | RGDP_YoY |
 GDP 디플레이터 등락률 (원계열, 전년동기비) | GDP_D_YoY |
 국내총생산(명목,원화표시) (십억원) | NGDP_KRW | -->
+
+## Reference
+
+### 국제상품 코드/통화단위 목록 (국제 상품 가격)
+
+1. 에너지 - 010000
+    - 원유- WTI - 010101 달러/배럴
+    - 원유- Dubai - 010102 달러/배럴
+    - 원유- Brent - 010103 달러/배럴
+    - 천연가스 - 010201 달러/MMBtu
+2. 금속 - 040000
+    - 철광석 - 040205 달러/톤
+    - 구리 - 040202 달러/톤
+    - 알루미늄 - 040203 달러/톤
+    - 니켈 - 040204 달러/톤
+    - 아연 - 040201 달러/톤
+    - 금 - 040101 달러/트로이온스
+3. 농산물 - 020000
+    - 대두 - 030201 달러/톤
+    - 옥수수 - 030101 달러/톤
+    - 소맥 - 030102 달러/톤
+    - 원당 - 030301 센트/파운드
+    - 원면 - 020101 센트/파운드
