@@ -86,7 +86,9 @@ objL8| 없음| 아니오||
 
 ```bash
 # 동행지수 순환변동치 
-eidc kosis --orgId "101" --tblId "DT_1C8015" --itemId "T1" --prdSe "M" --newEstPrdCnt "1" --prdInterval "1" --objL1 "B03" --format "json" --jsonVD "Y"
+eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --date-range --startPrdDe "202302" --endPrdDe "202402"
+
+eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --latest-date
 
 ```
 

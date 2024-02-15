@@ -4,47 +4,12 @@ async function kosisDownload(options) {
     try {
         const generator = new GeneratorAPI()
         const apiKey = await generator.getData('kosis')
-        let parmas = {}
-        if (options.latestDate) {
-            console.log(options)
-            const {
-                format,
-                orgId,
-                tblId,
-                itemId,
-                prdSe,
-                newEstPrdCnt,
-                prdInterval,
-                objL1
-            } = options
-            const data = await kosis.getIndicatorLatestData({
+        const fn = options.dateRange ? kosis.getIndicatorData : kosis.getIndicatorLatestData
+        const data = await fn({
                 apiKey,
-                format,
-                orgId,
-                tblId,
-                itemId,
-                prdSe,
-                newEstPrdCnt,
-                prdInterval,
-                objL1,
-                objL2: '',
-                objL3: '',
-                objL4: '',
-                objL5: '',
-                objL6: '',
-                objL7: '',
-                objL8: '',
-
-            })
-            console.log(data)
-        }
-        if (options.dateRange) {
-            // const data = await kosis.getIndicatorData({
-            //     apiKey,
-            //     ...options
-            // })
-            // console.log(data)
-        }
+                ...options            
+        })
+        console.log(data)
 
     } catch (error) {
         throw error
