@@ -23,12 +23,13 @@ eidc configure [kosis|oecd]
 
 ### Download from OECD
 
-- OECD CLI
-
 ```bash
 eidc oecd [options]
+```
 
-# example
+- OECD의 선행지수 순환변동치
+
+```bash
 eidc oecd --data-url "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/KOR.M.LI...AA...H?startPeriod=2023-11&dimensionAtObservation=AllDimensions&detail=DataOnly&format=jsondata"
 ```
 
