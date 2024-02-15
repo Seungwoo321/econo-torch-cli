@@ -1,7 +1,7 @@
 const { oecd } = require('eidl')
 async function oecdDownload(options) {
     try {
-        const data = await oecd.getIndicatorData(options)
+        const data = await oecd.getIndicatorData(options.dataUrl.toString())
         console.log(data)
     } catch (error) {
         throw error

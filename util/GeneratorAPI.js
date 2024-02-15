@@ -1,11 +1,11 @@
 const { homedir } = require("os")
-const path = require('path')
+const { resolve } = require('path')
 const fs = require('fs-extra')
 
 module.exports = class GeneratorAPI {
     constructor () {
         this._config = {}
-        this._configPath = path.resolve(homedir(), '.local.eidc.json')
+        this._configPath = resolve(homedir(), '.local.eidc.json')
     }
     
     getConfigPath () {
@@ -23,12 +23,12 @@ module.exports = class GeneratorAPI {
     }
 
     async saveData (data) {
-        this._config = {
-            ...this._config,
-            ...data
-        }
         try {
-            await fs.writeJsonSync(this._configPath, this._config)
+            const savedData = await fs.readJson(this._configPath)
+            await fs.writeJsonSync(this._configPath, {
+                ...savedData,
+                ...data
+            })
             console.log(`You have saved successfully. See ${this._configPath}`)
         } catch (error) {
             throw error

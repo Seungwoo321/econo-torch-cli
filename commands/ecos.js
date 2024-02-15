@@ -4,8 +4,10 @@ async function ecosDownload(options) {
     try {
         const generator = new GeneratorAPI()
         const apiKey = await generator.getData('ecos')
-        console.log(`API Key is '${apiKey}'`)
-        const data = await ecos.getIndicatorData(options)
+        const data = await ecos.getIndicatorData({
+            apiKey,
+            ...options
+        })
         console.log(data)
     } catch (error) {
         throw error

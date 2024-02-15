@@ -17,11 +17,7 @@ function checkNodeVersion(wanted, id) {
 
 checkNodeVersion(requiredVersion, 'eidc')
 
-function valildArgmuent (source) {
-    return ['kosis', 'ecos'].includes(source)
-}
-
-const program = require('commander')
+const { program } = require('commander')
 
 program
     .version(`eidc ${require('../package').version}`)
@@ -31,15 +27,11 @@ program.command('configure')
     .argument('<source>', 'kosis, ecos')
     .option('--api-key <API Key>', 'Please enter API key')
     .action((source, options) => {
-        if (valildArgmuent(source)) {
-            require('../commands/configure')(source, options)
-        } else {
-
-        }
+        require('../commands/configure')(source, options)
     })
 
 program.command('oecd')
-    .option('--data-url <dataUrl>', '')
+    .requiredOption('--data-url <dataUrl>', '')
     .action(options => {
         require('../commands/oecd')(options)
     })
@@ -49,11 +41,11 @@ program.command('ecos')
     .option('--language <language>', '언어구분')
     .option('--startCount <startCount', '요청 시작 건수')
     .option('--endCount <endCount', '요청 종료 건수')
-    .option('--stateCode <stateCode>', '통계표 코드')
+    .option('--statCode <statCode>', '통계표 코드')
     .option('--period <period>', '주기')
     .option('--searchStartDate <searchStartDate>', '검색시작 일자')
     .option('--searchEndDate <searchEndDate>', '검색종료 일자')
-    .option('--itemCode <itemCode1>', '통계 항목 코드1')
+    .option('--itemCode1 <itemCode1>', '통계 항목 코드1')
     .option('--itemCode2 <itemCode2>', '통계 항목 코드2 (option)')
     .option('--itemCode3 <itemCode3>', '통계 항목 코드3 (option)')
     .option('--itemCode4 <itemCode4>', '통계 항목 코드4 (option)')
@@ -61,27 +53,27 @@ program.command('ecos')
         require('../commands/ecos')(options)
     })
 
-program.command('kosis')
-    .option('--orgId <orgId>', '')
-    .option('--tblId <tblId>', '')
-    .option('--itemId <itemId>', '')
-    .option('--prdSe <prdSe>', '수록주기')
-    .option('--newEstPrdCnt <newEstPrdCnt>', '기간조회 방법1. 최신자료 기준 조회시 최근 수록 시점 개수')
-    .option('--prdInterval <prdInterval>', '기간조회 방법1. 최신자료 기준 조회시 최근 수록 시점 간격')
-    .option('--startPrdDe <startPrdDe>', '기간조회 방법2. 시점 기준 조회시 시작 수록 시점')
-    .option('--endPrdDe <endPrdDe>', '기간조회 방법2. 시점 기준 조회시 종료 수록 시점')
-    .option('--objL1 <objL1>', '')
-    .option('--objL2 <objL1>', 'optional')
-    .option('--objL3 <objL1>', 'optional')
-    .option('--objL4 <objL1>', 'optional')
-    .option('--objL5 <objL1>', 'optional')
-    .option('--objL6 <objL1>', 'optional')
-    .option('--objL7 <objL1>', 'optional')
-    .option('--objL8 <objL1>', 'optional')
-    .option('')
-    .action(options => {
-        require('../commands/kosis')(options)
-    })
+// program.command('kosis')
+//     .option('--orgId <orgId>', '')
+//     .option('--tblId <tblId>', '')
+//     .option('--itemId <itemId>', '')
+//     .option('--prdSe <prdSe>', '수록주기')
+//     .option('--newEstPrdCnt <newEstPrdCnt>', '기간조회 방법1. 최신자료 기준 조회시 최근 수록 시점 개수')
+//     .option('--prdInterval <prdInterval>', '기간조회 방법1. 최신자료 기준 조회시 최근 수록 시점 간격')
+//     .option('--startPrdDe <startPrdDe>', '기간조회 방법2. 시점 기준 조회시 시작 수록 시점')
+//     .option('--endPrdDe <endPrdDe>', '기간조회 방법2. 시점 기준 조회시 종료 수록 시점')
+//     .option('--objL1 <objL1>', '')
+//     .option('--objL2 <objL1>', 'optional')
+//     .option('--objL3 <objL1>', 'optional')
+//     .option('--objL4 <objL1>', 'optional')
+//     .option('--objL5 <objL1>', 'optional')
+//     .option('--objL6 <objL1>', 'optional')
+//     .option('--objL7 <objL1>', 'optional')
+//     .option('--objL8 <objL1>', 'optional')
+//     .option('')
+//     .action(options => {
+//         require('../commands/kosis')(options)
+//     })
 
 
 
