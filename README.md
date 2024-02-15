@@ -5,7 +5,11 @@
 ### Installation
 
 ```bash
-npm install eidc
+# npm install eidc
+
+git clone https://github.com/Seungwoo321/eidc.git
+npm i -g ./eidc
+
 ```
 
 ### Configurations
