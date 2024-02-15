@@ -84,11 +84,11 @@ objL8| 없음| 아니오||
 
 #### KOSIS Real Case
 
-- TODO
+```bash
+# 동행지수 순환변동치 
+eidc kosis --orgId "101" --tblId "DT_1C8015" --itemId "T1" --prdSe "M" --newEstPrdCnt "1" --prdInterval "1" --objL1 "B03" --format "json" --jsonVD "Y"
 
-<!-- ```bash
-
-``` -->
+```
 
 ### Download from ECOS
 
@@ -256,6 +256,38 @@ eidc ecos --statCode "902Y023" --itemCode1 "IR3TIB" --period "M" --searchStartDa
 ```bash
 # 미국
 eidc ecos --statCode "902Y002" --itemCode1 "USA" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "KOR"
+```
+
+- 통화
+
+```bash
+# M2 (평잔, 원계열)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA00" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# 현금통화 (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA01" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# 요구불예금 (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA02" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# 수시입출식저축성예금 (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA03" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# MMF (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA04" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# 양도서예금증서 (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA06" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# CMA (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA08" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# 환매조건부채권매도 (단기부동자금)
+eidc ecos --statCode "101Y004" --itemCode1 "BBHA15" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
+# Lf
+eidc ecos --statCode "111Y004" --itemCode1 "LA00000" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
+
 ```
 
 ## Reference

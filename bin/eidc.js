@@ -17,17 +17,17 @@ function checkNodeVersion(wanted, id) {
 
 checkNodeVersion(requiredVersion, 'eidc')
 
-const { program } = require('commander')
+const { program, Option } = require('commander')
 
 program
     .version(`eidc ${require('../package').version}`)
     .usage('<command> [options]')
 
 program.command('configure')
-    .argument('<source>', 'kosis, ecos')
+    .addOption(new Option('--source <source>', 'API Source').choices(['kosis', 'ecos']))
     .option('--api-key <API Key>', 'Please enter API key')
-    .action((source, options) => {
-        require('../commands/configure')(source, options)
+    .action(options => {
+        require('../commands/configure')(options)
     })
 
 program.command('oecd')
@@ -53,30 +53,29 @@ program.command('ecos')
         require('../commands/ecos')(options)
     })
 
-// program.command('kosis')
-//     .option('--orgId <orgId>', '')
-//     .option('--tblId <tblId>', '')
-//     .option('--itemId <itemId>', '')
-//     .option('--prdSe <prdSe>', '수록주기')
-//     .option('--newEstPrdCnt <newEstPrdCnt>', '기간조회 방법1. 최신자료 기준 조회시 최근 수록 시점 개수')
-//     .option('--prdInterval <prdInterval>', '기간조회 방법1. 최신자료 기준 조회시 최근 수록 시점 간격')
-//     .option('--startPrdDe <startPrdDe>', '기간조회 방법2. 시점 기준 조회시 시작 수록 시점')
-//     .option('--endPrdDe <endPrdDe>', '기간조회 방법2. 시점 기준 조회시 종료 수록 시점')
-//     .option('--objL1 <objL1>', '')
-//     .option('--objL2 <objL1>', 'optional')
-//     .option('--objL3 <objL1>', 'optional')
-//     .option('--objL4 <objL1>', 'optional')
-//     .option('--objL5 <objL1>', 'optional')
-//     .option('--objL6 <objL1>', 'optional')
-//     .option('--objL7 <objL1>', 'optional')
-//     .option('--objL8 <objL1>', 'optional')
-//     .option('')
-//     .action(options => {
-//         require('../commands/kosis')(options)
-//     })
-
-
-
+program.command('kosis')
+    .option('--date-range', '기간조회 방법 중 시점기준으로 조회')
+    .option('--latest-date', '기간조회 방법 중 최신자료 기준으로 조회')
+    .option('--orgId <orgId>', '')
+    .option('--tblId <tblId>', '')
+    .option('--itemId <itemId>', '')
+    .option('--prdSe <prdSe>', '수록주기')
+    .option('--objL1 <objL1>', '')
+    .option('--objL2 <objL1>', 'optional')
+    .option('--objL3 <objL1>', 'optional')
+    .option('--objL4 <objL1>', 'optional')
+    .option('--objL5 <objL1>', 'optional')
+    .option('--objL6 <objL1>', 'optional')
+    .option('--objL7 <objL1>', 'optional')
+    .option('--objL8 <objL1>', 'optional')
+    .addOption(new Option('--format <format>', 'Output format').default('json'))
+    .addOption(new Option('--startPrdDe <startPrdDe>', '시점 기준 조회시 시작 수록 시점').implies('--date-range'))
+    .addOption(new Option('--endPrdDe <endPrdDe>', '시점 기준 조회시 종료 수록 시점').implies('--date-range'))
+    .addOption(new Option('--newEstPrdCnt <newEstPrdCnt>', '최신자료 기준 조회시 최근 수록 시점 개수').implies('--latest-date'))
+    .addOption(new Option('--prdInterval <prdInterval>', '최신자료 기준 조회시 최근 수록 시점 간격').implies('--latest-date'))
+    .action(options => {
+        require('../commands/kosis')(options)
+    })
 
 // output help information on unknown commands
 program.on('command', ([cmd]) => {

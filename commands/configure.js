@@ -2,19 +2,12 @@ const configPrompt = require('../util/configPrompt')
 const GeneratorAPI = require('../util/GeneratorAPI')
 const inquirer = require('inquirer')
 
-function valildArgmuent (source) {
-    return ['kosis', 'ecos'].includes(source)
-}
-
-async function configure (source, options) {
+async function configure (options) {
     try {
-        
-        if (!valildArgmuent(source)) {
-            throw new Error('Invalied Source')
-        }
+    
         let apiKey = options.apiKey
         if (!options.apiKey) {
-            const promptOptions = await inquirer.prompt(configPrompt(source, options))
+            const promptOptions = await inquirer.prompt(configPrompt(options))
             apiKey = promptOptions.apiKey
         }
         const generator = new GeneratorAPI()
