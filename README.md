@@ -63,6 +63,14 @@ objL6| 없음| 아니오||
 objL7| 없음| 아니오||
 objL8| 없음| 아니오||
 
+#### Real Case
+
+- TODO
+
+<!-- ```bash
+
+``` -->
+
 ### Download from ECOS
 
 ECOS API에서 `StatisticSearch` 서비스를 제공합니다
@@ -87,45 +95,28 @@ itemCode2||N||
 itemCode3||N||
 itemCode4||N||
 
-- 시장금리 국고채 (1년) 일별
+#### Real Case
 
 ```bash
+# 시장금리 국고채 (1년) 일별
 eidc ecos --statCode "817Y002" --itemCode1 "010190000" --period "D" --searchStartDate "20240101" --searchEndDate "20240201" --endCount "30"
-```
 
-- 시장금리 국고채 (3년) 일별
-
-```bash
+# 시장금리 국고채 (3년) 일별
 eidc ecos --statCode "817Y002" --itemCode1 "010200000" --period "D" --searchStartDate "20240101" --searchEndDate "20240201" --endCount "30"
-```
 
-- 시장금리 국고채 (10년) 일별
-
-```bash
+# 시장금리 국고채 (10년) 일별
 eidc ecos --statCode "817Y002" --itemCode1 "010210000" --period "D" --searchStartDate "20240101" --searchEndDate "20240201" --endCount "30"
-```
 
-- 시장금리 국고채 (1년) 월별
-
-```bash
+# 시장금리 국고채 (1년) 월별
 eidc ecos --statCode "721Y001" --itemCode1 "5030000" --period "M" --searchStartDate "202401" --searchEndDate "202402"
-```
 
-- 시장금리 국고채 (3년) 월별
-
-```bash
+# 시장금리 국고채 (3년) 월별
 eidc ecos --statCode "721Y001" --itemCode1 "5020000" --period "M" --searchStartDate "202401" --searchEndDate "202402"
-```
 
-- 시장금리 국고채 (10년) 월별
-
-```bash
+# 시장금리 국고채 (10년) 월별
 eidc ecos --statCode "721Y001" --itemCode1 "5050000" --period "M" --searchStartDate "202401" --searchEndDate "202402"
-```
 
-- 회사채수익률 (AA-) 월
-
-```bash
+# 회사채수익률 (AA-) 월
 eidc ecos --statCode "721Y001" --itemCode1 "7020000" --period "M" --searchStartDate "202401" --searchEndDate "202402"
 ```
 
