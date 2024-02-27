@@ -168,49 +168,49 @@ eidc ecos --statCode "200Y005" --itemCode1 "1400" --period "Q" --searchStartDate
 # 국내총생산(GDP)(원계열, 실질)
 eidc ecos --statCode "200Y006" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
 
-# GDP디플레이터 (2015=100)
+# GDP 디플레이터 (2015=100)
 eidc ecos --statCode "200Y011" --itemCode1 "1400" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
 
-# 경제성장률 (실질, 계절조정, 전기비)
+# 경제성장률(GDP)(실질, 계절조정, 전기비)
 eidc ecos --statCode "200Y002" --itemCode1 "10111" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
 
-# 경제성장률 (실질, 원계열, 전년동기비)
+# 경제성장률(GDP)(실질, 원계열, 전년동기비)
 eidc ecos --statCode "200Y002" --itemCode1 "10211" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
 
-# GDP 디플레이터 등락률 (원계열, 전년동기비)
+# GDP 디플레이터 등락률(원계열, 전년동기비)
 eidc ecos --statCode "200Y002" --itemCode1 "301" --period "Q" --searchStartDate "2023Q3" --searchEndDate "2023Q3"
 ```
 
 - 경제성장률 (연간지표)
 
 ```bash
-# GDP디플레이터 (2015=100)
+# GDP 디플레이터(2015=100)
 eidc ecos --statCode "200Y011" --itemCode1 "1400" --period "A" --searchStartDate "2022" --searchEndDate "2022"
 eidc ecos --statCode "200Y001" --itemCode1 "90103" --period "A" --searchStartDate "2022" --searchEndDate "2022"
 
-# GDP디플레이터 등락률 (%)
+# GDP 디플레이터(2015=100) 등락률(%)
 eidc ecos --statCode "200Y001" --itemCode1 "9010301" --period "A" --searchStartDate "2022" --searchEndDate "2022"
-    
-# 국내총생산(GDP)(명목, 원화표시)
+
+# 국내총생산(GDP)(명목, 원화표시)(십억원)
 eidc ecos --statCode "200Y001" --itemCode1 "10101" --period "A" --searchStartDate "2022" --searchEndDate "2022"
-    
-# 국내총생산(GDP)(명목, 달러표시)
+
+# 국내총생산(GDP)(명목, 달러표시)(억달러)
 eidc ecos --statCode "200Y001" --itemCode1 "1010101" --period "A" --searchStartDate "2022" --searchEndDate "2022"
-    
-# 국내총생산(실질성장률)
+
+# 경제성장률(실질성장률)(%) 
 eidc ecos --statCode "200Y001" --itemCode1 "20101" --period "A" --searchStartDate "2022" --searchEndDate "2022"
 ```
 
 - 환율 > 일일환율 (대원화환율)
 
 ```bash
-# 원/미국달러 (매매기준율) (일별)
+# 원/미국달러(매매기준율)(일별)
 eidc ecos --statCode "731Y001" --itemCode1 "0000001" --period "D" --searchStartDate "20230101" --searchEndDate "20230131" --endCount 31
 
-# 원/위안 (매매기준율) (일별)
+# 원/위안(매매기준율)(일별)
 eidc ecos --statCode "731Y001" --itemCode1 "0000053" --period "D" --searchStartDate "20230101" --searchEndDate "20230131" --endCount 31
 
-# 원/일본엔(100엔) (일별)
+# 원/일본엔(100엔)(일별)
 eidc ecos --statCode "731Y001" --itemCode1 "0000002" --period "D" --searchStartDate "20230101" --searchEndDate "20230131" --endCount 31
 ```
 
@@ -219,15 +219,15 @@ eidc ecos --statCode "731Y001" --itemCode1 "0000002" --period "D" --searchStartD
 
 ```bash
 
-# 원/미국달러 (매매기준율) (월별)
+# 원/미국달러(매매기준율)(월별)
 eidc ecos --statCode "731Y004" --itemCode1 "0000001" --period "M" --searchStartDate "202401" --searchEndDate "202401"
 eidc ecos --statCode "731Y004" --itemCode1 "0000001" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "0000200"
 
-# 원/위안 (매매기준율) (월별)
+# 원/위안(매매기준율)(월별)
 eidc ecos --statCode "731Y004" --itemCode1 "0000053" --period "M" --searchStartDate "202401" --searchEndDate "202401"
 eidc ecos --statCode "731Y004" --itemCode1 "0000053" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "0000200"
 
-# 원/일본엔(100엔) (월별)
+# 원/일본엔(100엔)(월별)
 eidc ecos --statCode "731Y004" --itemCode1 "0000002" --period "M" --searchStartDate "202401" --searchEndDate "202401"
 eidc ecos --statCode "731Y004" --itemCode1 "0000002" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "0000200"
 ```
@@ -245,10 +245,10 @@ eidc ecos --statCode "902Y003" --itemCode1 "010101" --period "M" --searchStartDa
   - [국가코드 목록 (주요 국제 금리, 국제 주요국 주가지수)](#국가코드-목록-주요-국제-금리-국제-주요국-주가지수)
 
 ```bash
-# 장기금리 (IRLT)
+# 장기금리(IRLT)
 eidc ecos --statCode "902Y023" --itemCode1 "IRLT" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "KOR"
 
-# 단기금리 (IR3TIP)
+# 단기금리(IR3TIP)
 eidc ecos --statCode "902Y023" --itemCode1 "IR3TIB" --period "M" --searchStartDate "202401" --searchEndDate "202401" --itemCode2 "KOR"
 ```
 
@@ -263,28 +263,28 @@ eidc ecos --statCode "902Y002" --itemCode1 "USA" --period "M" --searchStartDate 
 - 통화
 
 ```bash
-# M2 (평잔, 원계열)
+# M2(평잔, 원계열)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA00" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# 현금통화 (단기부동자금)
+# 현금통화(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA01" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# 요구불예금 (단기부동자금)
+# 요구불예금(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA02" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# 수시입출식저축성예금 (단기부동자금)
+# 수시입출식저축성예금(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA03" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# MMF (단기부동자금)
+# MMF(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA04" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# 양도서예금증서 (단기부동자금)
+# 양도서예금증서(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA06" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# CMA (단기부동자금)
+# CMA(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA08" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
-# 환매조건부채권매도 (단기부동자금)
+# 환매조건부채권매도(단기부동자금)
 eidc ecos --statCode "101Y004" --itemCode1 "BBHA15" --period "M" --searchStartDate "202311" --searchEndDate "202412" --endCount "13"
 
 # Lf

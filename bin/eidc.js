@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-
+require('dotenv').config()
 const chalk = require('chalk')
 const semver = require('semver')
 const requiredVersion = require('../package.json').engines.node
-const minimist = require('minimist')
+// const minimist = require('minimist')
 
 function checkNodeVersion(wanted, id) {
     if (!semver.satisfies(process.version, wanted, { includePrerelease: true })) {
@@ -32,6 +32,7 @@ program.command('configure')
 
 program.command('oecd')
     .requiredOption('--data-url <dataUrl>', '')
+    .option('--upload', '데이터 베이스에 업로드')
     .action(options => {
         require('../commands/oecd')(options)
     })
@@ -49,6 +50,7 @@ program.command('ecos')
     .option('--itemCode2 <itemCode2>', '통계 항목 코드2 (option)')
     .option('--itemCode3 <itemCode3>', '통계 항목 코드3 (option)')
     .option('--itemCode4 <itemCode4>', '통계 항목 코드4 (option)')
+    .option('--upload', '데이터 베이스에 업로드')
     .action(options => {
         require('../commands/ecos')(options)
     })
@@ -68,7 +70,7 @@ program.command('kosis')
     .option('--objL6 <objL1>', 'optional')
     .option('--objL7 <objL1>', 'optional')
     .option('--objL8 <objL1>', 'optional')
-    // .addOption(new Option('--format <format>', 'Output format').default('json'))
+    .option('--upload', '데이터 베이스에 업로드')
     .addOption(new Option('--startPrdDe <startPrdDe>', '시점 기준 조회시 시작 수록 시점').implies('--date-range'))
     .addOption(new Option('--endPrdDe <endPrdDe>', '시점 기준 조회시 종료 수록 시점').implies('--date-range'))
     .addOption(new Option('--newEstPrdCnt <newEstPrdCnt>', '최신자료 기준 조회시 최근 수록 시점 개수').implies('--latest-date'))
