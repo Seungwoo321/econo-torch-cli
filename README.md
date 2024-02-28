@@ -82,13 +82,16 @@ objL6| 없음| 아니오||
 objL7| 없음| 아니오||
 objL8| 없음| 아니오||
 
-#### KOSIS Real Case
+#### KOSIS Example
 
 ```bash
 # 동행지수 순환변동치 
 eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --date-range --startPrdDe "202302" --endPrdDe "202402"
 
 eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --latest-date
+
+# 선행지수 순환변동치
+
 
 ```
 
@@ -116,7 +119,7 @@ itemCode2||N||
 itemCode3||N||
 itemCode4||N||
 
-#### ECOS Real Case
+#### ECOS Example
 
 - 시장금리 (일별 / 월,분기,년)
 

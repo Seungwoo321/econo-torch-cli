@@ -3,7 +3,7 @@ const { Oecd } = require('../model')
 async function oecdDownload(options) {
   try {
     const { refAreaCode, startPeriod, endPeriod, upload, latest } = options
-    const dataUrl = `https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/${refAreaCode.toUpperCase()}.M.LI...AA...H?startPeriod=${startPeriod}&endPeriod=${endPeriod}&dimensionAtObservation=AllDimensions&detail=DataOnly&format=jsondata`
+    const dataUrl = `https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/${refAreaCode.toLowercase()}.M.LI...AA...H?startPeriod=${startPeriod}&endPeriod=${endPeriod}&dimensionAtObservation=AllDimensions&detail=DataOnly&format=jsondata`
     const responseData = await oecd.getIndicatorData(dataUrl.toString())
     const rows = responseData.map(value => ({ ...value, refAreaCode }))
     console.log(rows)
@@ -65,7 +65,7 @@ async function insertData (data) {
 
 const convertRow = row => ({
   ref_area: row.REF_AREA,
-  ref_area_code: row.refAreaCode,
+  ref_area_code: row.refAreaCode.toLowercase(),
   value: row.value,
   freq: row.FREQ,
   measure: row.MEASURE,
