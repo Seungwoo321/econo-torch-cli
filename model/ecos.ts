@@ -16,6 +16,7 @@ export class Ecos extends Model<InferAttributes<Ecos>, InferCreationAttributes<E
   wgt: string;
   time: string;
   data_value: string;
+  period: string;
 }
 
 Ecos.init({
@@ -60,6 +61,9 @@ Ecos.init({
   },
   data_value: {
     type: DataTypes.STRING(20)
+  },
+  period: {
+    type: DataTypes.STRING(5)
   }
 }, {
   ...options,

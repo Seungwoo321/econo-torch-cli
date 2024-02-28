@@ -18,7 +18,7 @@ npm i -g ./eidc
 - OECD는 API키가 필요하지 않습니다.
 
 ```bash
-eidc configure [kosis|oecd]
+eidc configure [kosis|ecos]
 ```
 
 ### Base
@@ -49,7 +49,7 @@ eidc oecd [options]
 - OECD의 선행지수 순환변동치
 
 ```bash
-eidc oecd --data-url "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/KOR.M.LI...AA...H?startPeriod=2023-11&dimensionAtObservation=AllDimensions&detail=DataOnly&format=jsondata"
+eidc oecd cli --ref-area-code "KOR" --start-period "2023-11" --end-period "2024-02"
 ```
 
 ### Download from KOSIS

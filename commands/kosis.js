@@ -6,50 +6,60 @@ async function kosisDownload(options) {
     const generator = new GeneratorAPI()
     const apiKey = await generator.getData('kosis')
     const fn = options.dateRange ? kosis.getIndicatorData : kosis.getIndicatorLatestData
-    const data = await fn({
+    const rows = await fn({
       apiKey,
-      ...options            
+      ...options
     })
+    if (options.latest) {
+      console.log('latest')
+      rows.splice(0, rows.length - 1)
+    }
     if (options.upload) {
       console.log('upload')
-      const result = await importData(data[data.length - 1])
+      const result = await insertData(rows)
       console.log(result)
     } else {
-      console.log(data)
+      console.log(rows)
     }
   } catch (error) {
+    console.log(error.message)
     throw error
   }
 }
-async function importData (data) {
+async function insertData (data) {
   if (data.CODE) throw new Error(`${data.CODE}: ${data.MESSAGE}`)
   try {
-    const row = convertRow(row)
-    const [metric, created] = await Kosis.findOrCreate({
+    const rows = data.map(convertRow)
+    const fn = rows.map(row => Kosis.findOrCreate({
       where: {
-        prd_de: row.PRD_DE,
-        tbl_id: row.TBL_ID,
-        itm_id: row.ITM_ID,
-        org_id: row.ORG_ID,
-        dt: row.DT,
-        prd_se: row.PRD_SE,
-        c1: row.C1,
-        c2: row.C2,
-        c3: row.C3,
-        c4: row.C4,
-        c5: row.C5,
-        c6: row.C6,
-        c7: row.C7,
-        c8: row.C8
-      }
-    });
-    if (created) {
-      return metric
+        prd_de: row.prd_de,
+        tbl_id: row.tbl_id,
+        itm_id: row.itm_id,
+        org_id: row.org_id,
+        dt: row.dt,
+        prd_se: row.prd_se,
+        c1: row.c1,
+        c2: row.c2 ?? null,
+        c3: row.c3 ?? null,
+        c4: row.c4 ?? null,
+        c5: row.c5 ?? null,
+        c6: row.c6 ?? null,
+        c7: row.c7 ?? null,
+        c8: row.c8 ?? null
+      },
+      defaults: row
+    }))
+
+    const values = await Promise.all(fn)
+    const createdRows = values.filter(([_, created]) => created)
+    if (createdRows.length) {
+      return `SUCCESS: Insert Data To Kosis - ${createdRows.length}`
     } else {
-      throw new Error('Failed findOrCreate')
+      return 'FAILED: Exist Data To Kosis'
     }
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
 }
 const convertRow = row => ({
@@ -104,10 +114,10 @@ const convertRow = row => ({
   c8_nm_eng: row.C8_NM_ENG,
 })
 module.exports = (...args) => {
-    return kosisDownload(...args).catch(error => {
-        console.log(error?.response?.errors || error.message)
-        if (!process.env.EIDC_CLI_TEST) {
-            process.exit(1)
-        }
-    })
+  return kosisDownload(...args).catch(error => {
+    if (error) console.log(error)
+    if (!process.env.EIDC_CLI_TEST) {
+        process.exit(1)
+    }
+  })
 }

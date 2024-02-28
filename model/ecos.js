@@ -48,6 +48,9 @@ Ecos.init({
     },
     data_value: {
         type: sequelize_1.DataTypes.STRING(20)
+    },
+    period: {
+        type: sequelize_1.DataTypes.STRING(5)
     }
 }, {
     ...db_1.options,

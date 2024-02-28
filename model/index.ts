@@ -1,7 +1,7 @@
 export { Indicator } from './indicator';
 export { Ecos } from './ecos'
 export { Kosis } from './kosis'
-export { OECD } from './oecd'
+export { Oecd } from './oecd'
 
 // (async () => {
 //   try {

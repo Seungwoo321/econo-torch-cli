@@ -1,17 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OECD = void 0;
+exports.Oecd = void 0;
 const sequelize_1 = require("sequelize");
 const db_1 = require("../db");
-class OECD extends sequelize_1.Model {
+class Oecd extends sequelize_1.Model {
 }
-exports.OECD = OECD;
-OECD.init({
+exports.Oecd = Oecd;
+Oecd.init({
     ref_area: {
         type: sequelize_1.DataTypes.STRING(50)
     },
+    ref_area_code: {
+        type: sequelize_1.DataTypes.STRING(50)
+    },
     value: {
-        type: sequelize_1.DataTypes.FLOAT
+        type: sequelize_1.DataTypes.STRING(50)
     },
     freq: {
         type: sequelize_1.DataTypes.STRING(50)
