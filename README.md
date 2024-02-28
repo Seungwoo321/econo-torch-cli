@@ -84,6 +84,8 @@ objL8| 없음| 아니오||
 
 #### KOSIS Example
 
+- 월간 지표
+
 ```bash
 # 동행지수 순환변동치 
 eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --date-range --startPrdDe "202302" --endPrdDe "202402"
@@ -91,7 +93,52 @@ eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --date-r
 eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "B03" --latest-date
 
 # 선행지수 순환변동치
+eidc kosis --orgId "101" --tblId "DT_1C8015" --itmId "T1" --objL1 "A03" --latest-date
 
+# 선행종합지수
+eidc kosis --orgId "101" --tblId "DT_1C8016" --itmId "T1" --objL1 "A01" --latest-date
+
+# 코스피 지수
+eidc kosis --orgId "343" --tblId "DT_343_2010_S0029" --itmId "13103792816T1" --objL1 "13102792816A.01" --latest-date
+
+# 월별 소비자 물가 등락률 전년동월비 (%)
+eidc kosis --orgId "101" --tblId "DT_1J22042" --itmId "T03" --objL1 "0" --latest-date
+
+# KOSPI_MarketCap
+eidc kosis --orgId "343" --tblId "DT_343_2010_S0013" --itmId "13103792750T1" --objL1 "13102792750A.05" --latest-date
+```
+
+- 연간 지표
+
+```bash
+# 국내총생산(명목,원화표시) (십억원)
+eidc kosis --orgId "301" --tblId "DT_200Y001" --itmId "13103134474999" --objL1 "13102134474ACC_ITEM.10101" --latest-date
+
+# 국내총생산(명목,달러표시) (억달러)
+eidc kosis --orgId "301" --tblId "DT_200Y001" --itmId "13103134474999" --objL1 "13102134474ACC_ITEM.1010101" --latest-date
+
+# 경제 성장률 (실질)(%)
+eidc kosis --orgId "301" --tblId "DT_200Y001" --itmId "13103134474999" --objL1 "13102134474ACC_ITEM.20101" --latest-date
+
+# GDP 디플레이터 (2015=100)
+eidc kosis --orgId "301" --tblId "DT_200Y001" --itmId "13103134474999" --objL1 "13102134474ACC_ITEM.90103" --latest-date
+
+# GDP 디플레이터 (2015=100) (등락률) (%)
+eidc kosis --orgId "301" --tblId "DT_200Y001" --itmId "13103134474999" --objL1 "13102134474ACC_ITEM.9010301" --latest-date
+
+```
+
+- 분기 지표
+
+```bash
+# 경제 성장률(GDP)(실질, 계절조정, 전기비)
+eidc kosis --orgId "301" --tblId "DT_200Y002" --itmId "13103134475999" --objL1 "13102134475ACC_ITEM.10111" --latest-date
+
+# 경제 성장률(GDP)(실질, 원계열, 전년동기비)
+eidc kosis --orgId "301" --tblId "DT_200Y002" --itmId "13103134475999" --objL1 "13102134475ACC_ITEM.10211" --latest-date
+
+# GDP 디플레이터 등락률 (원계열, 전년동기비)
+eidc kosis --orgId "301" --tblId "DT_200Y002" --itmId "13103134475999" --objL1 "13102134475ACC_ITEM.301" --latest-date
 
 ```
 
